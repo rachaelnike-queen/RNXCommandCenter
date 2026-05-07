@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RNX | EMPIRE ONLINE</title>
+    <title>RNX | TOTAL EMPIRE CONTROL</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
+        /* Jamie Reid Pink Glow Animation */
         @keyframes pink-glow {
             0%, 100% { box-shadow: 0 0 5px #FF1493; border-color: #FF1493; }
             50% { box-shadow: 0 0 20px #FF1493, 0 0 10px #FF69B4; border-color: #ffffff; }
@@ -25,7 +26,7 @@
             text-transform: uppercase;
         }
 
-        /* Updated Grid for Gray Background visibility */
+        /* Industrial Gray Grid */
         .bg-grid {
             background-color: #2d2d2d;
             background-image: linear-gradient(to right, #3d3d3d 1px, transparent 1px),
@@ -36,67 +37,94 @@
         .sidebar-btn { 
             transition: all 0.2s ease; 
             border: 2px solid #444; 
-            margin-bottom: 1.2rem; 
-            width: 3.5rem; 
-            height: 3.5rem; 
+            margin-bottom: 1rem; 
+            width: 5.5rem; 
+            height: 4.5rem; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
             background: #1a1a1a;
+            flex-shrink: 0;
         }
-        .sidebar-btn:hover { transform: rotate(5deg) scale(1.1); border-color: #FF1493; }
+        .sidebar-btn:hover { transform: rotate(3deg) scale(1.05); border-color: #FF1493; }
         
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            background: white;
-        }
+        iframe { width: 100%; height: 100%; border: none; background: white; }
 
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* Custom Pink Scrollbar */
+        .sidebar-scroll::-webkit-scrollbar { width: 4px; }
+        .sidebar-scroll::-webkit-scrollbar-thumb { background: #FF1493; border-radius: 10px; }
+        .sidebar-scroll { scrollbar-width: thin; scrollbar-color: #FF1493 #1a1a1a; }
     </style>
 </head>
 <body class="text-white flex h-screen overflow-hidden bg-grid font-mono">
 
-    <!-- SIDEBAR -->
-    <nav class="w-24 bg-[#1a1a1a] border-r-4 border-[#FF1493] flex flex-col items-center py-6 z-50 overflow-y-auto no-scrollbar shadow-[5px_0_15px_rgba(0,0,0,0.5)]">
-        <div class="mb-10">
-            <span class="ransom-note text-sm">RNX</span>
+    <!-- SIDEBAR: FULL BRAND HANGAR -->
+    <nav class="w-40 bg-[#1a1a1a] border-r-4 border-[#FF1493] flex flex-col items-center py-6 z-50 shadow-[5px_0_15px_rgba(0,0,0,0.5)]">
+        <div class="mb-6 flex-shrink-0 text-center">
+            <span class="ransom-note text-sm">RNX<br>EMPIRE</span>
         </div>
 
-        <!-- THE BIBLE -->
-        <button onclick="loadSpace('https://docs.google.com/spreadsheets/d/1VDE2UK1lFXKsfgx1fI8z8nqesBzAIpWZHO4g4vCWE-k/preview', 'THE BIBLE')" class="sidebar-btn neon-pulse-pink">
-            <span class="text-2xl">📖</span>
-        </button>
+        <div class="flex-1 overflow-y-auto sidebar-scroll w-full flex flex-col items-center px-2">
+            
+            <!-- MASTER BIBLE -->
+            <button onclick="loadSpace('https://docs.google.com/spreadsheets/d/1VDE2UK1lFXKsfgx1fI8z8nqesBzAIpWZHO4g4vCWE-k/preview', 'THE BIBLE')" class="sidebar-btn flex-col neon-pulse-pink">
+                <span class="text-xl">📖</span>
+                <span class="text-[7px] font-bold mt-1 uppercase">Master Bible</span>
+            </button>
 
-        <!-- FUNKY BLACK POPPY -->
-        <button onclick="loadSpace('https://www.depop.com/', 'FUNKY BLACK POPPY')" class="sidebar-btn">
-            <span class="text-black bg-[#FF1493] font-black px-1 text-[10px]">FBP</span>
-        </button>
+            <!-- RACHAELNIKE -->
+            <button onclick="loadSpace('https://rachaelnike.com', 'RACHAELNIKE')" class="sidebar-btn flex-col">
+                <span class="text-xl text-[#FF1493]">👑</span>
+                <span class="text-[7px] font-bold mt-1 uppercase text-white">RachaelNike</span>
+            </button>
 
-        <!-- BLACK POPPY CONTINUUM -->
-        <button onclick="loadSpace('https://blackpoppycontinuum.substack.com/', 'BLACK POPPY')" class="sidebar-btn">
-            <span class="text-[#FF1493] font-black text-xs">BPM</span>
-        </button>
+            <!-- FUNKYBLACKPOPPY -->
+            <button onclick="loadSpace('https://www.depop.com/funkyblackpoppy', 'FUNKYBLACKPOPPY')" class="sidebar-btn flex-col">
+                <span class="text-xl">🛍️</span>
+                <span class="text-[7px] font-bold mt-1 uppercase text-white">FunkyPoppy</span>
+            </button>
 
-        <!-- CURSEY QUEEN -->
-        <button onclick="loadSpace('https://studio.youtube.com/', 'CURSEY QUEEN')" class="sidebar-btn">
-            <span class="text-2xl">📺</span>
-        </button>
+            <!-- BLACKPOPPYMAGIK -->
+            <button onclick="loadSpace('https://blackpoppymagik.com', 'BLACKPOPPYMAGIK')" class="sidebar-btn flex-col">
+                <span class="text-xl">🔮</span>
+                <span class="text-[7px] font-bold mt-1 uppercase text-white">BP Magik</span>
+            </button>
 
-        <!-- TURTLE ORACLE -->
-        <button onclick="loadSpace('https://docs.google.com/spreadsheets/d/1VDE2UK1lFXKsfgx1fI8z8nqesBzAIpWZHO4g4vCWE-k/edit#gid=0', 'TURTLE ORACLE')" class="sidebar-btn border-dashed">
-            <span class="text-2xl">🐢</span>
-        </button>
+            <!-- GHOSTQUE -->
+            <button onclick="loadSpace('https://ghostque.com', 'GHOSTQUE')" class="sidebar-btn flex-col">
+                <span class="text-xl">👻</span>
+                <span class="text-[7px] font-bold mt-1 uppercase text-white">Ghostque</span>
+            </button>
 
-        <!-- GOTH DAMN BATZ -->
-        <button onclick="loadSpace('https://www.etsy.com/', 'GOTH DAMN BATZ')" class="sidebar-btn">
-            <span class="text-2xl">🦇</span>
-        </button>
+            <!-- VENDOO -->
+            <button onclick="loadSpace('https://app.vendoo.co', 'VENDOO')" class="sidebar-btn flex-col">
+                <span class="text-xl">💰</span>
+                <span class="text-[7px] font-bold mt-1 uppercase text-white">Vendoo</span>
+            </button>
 
-        <div class="mt-auto pt-4">
-            <button class="w-12 h-12 bg-[#FF1493] text-black font-bold border-2 border-white transform rotate-6 shadow-lg">AI</button>
+            <!-- CURSEYQUEEN -->
+            <button onclick="loadSpace('https://studio.youtube.com/', 'CURSEYQUEEN')" class="sidebar-btn flex-col">
+                <span class="text-xl">📺</span>
+                <span class="text-[7px] font-bold mt-1 uppercase text-white">CurseyQueen</span>
+            </button>
+
+            <!-- BLACKPOPPYCONTINUUM -->
+            <button onclick="loadSpace('https://blackpoppycontinuum.substack.com/', 'CONTINUUM')" class="sidebar-btn flex-col">
+                <span class="text-xl">🌀</span>
+                <span class="text-[7px] font-bold mt-1 uppercase text-white">Continuum</span>
+            </button>
+
+            <!-- TURTLE ORACLE -->
+            <button onclick="loadSpace('https://docs.google.com/spreadsheets/d/1VDE2UK1lFXKsfgx1fI8z8nqesBzAIpWZHO4g4vCWE-k/edit#gid=0', 'TURTLE ORACLE')" class="sidebar-btn flex-col border-dashed">
+                <span class="text-xl">🐢</span>
+                <span class="text-[7px] font-bold mt-1 uppercase text-white">Oracle</span>
+            </button>
+
+        </div>
+
+        <div class="mt-4 flex-shrink-0 text-center">
+            <button class="w-10 h-10 bg-[#FF1493] text-black font-bold border-2 border-white transform rotate-6 shadow-lg">AI</button>
+            <div class="text-[8px] font-bold mt-2">ASSIST</div>
         </div>
     </nav>
 
@@ -105,23 +133,19 @@
         <header class="h-14 bg-[#1a1a1a] border-b-2 border-[#FF1493] flex items-center px-6 justify-between">
             <div class="flex items-center space-x-4">
                 <div class="h-4 w-4 bg-[#FF1493] animate-ping"></div>
-                <span id="space-title" class="ransom-note text-xs">STATUS: GRAY ACTIVATED</span>
+                <span id="space-title" class="ransom-note text-xs">EMPIRE: ONLINE</span>
             </div>
-            <div class="flex flex-col items-end">
-                <div class="text-[10px] font-black text-[#FF1493] italic uppercase tracking-tighter">RNX / Riot Mode</div>
-            </div>
+            <div class="text-[10px] font-black text-[#FF1493] italic uppercase tracking-tighter">RNX / Riot Mode</div>
         </header>
 
         <div class="flex-1 relative">
             <iframe id="viewport" src="about:blank"></iframe>
             <div id="overlay" class="absolute inset-0 bg-[#2d2d2d] flex flex-col items-center justify-center">
-                <h1 class="text-7xl font-black italic text-white tracking-tighter mb-4 transform -rotate-1">
+                <h1 class="text-6xl font-black italic text-white tracking-tighter mb-4 transform -rotate-1">
                     RAYNE <span class="text-[#FF1493]">NIKE</span> X
                 </h1>
-                <div class="bg-white text-black px-6 py-2 font-black transform rotate-2 text-xl shadow-xl">
-                    COMMAND CENTER
-                </div>
-                <p class="mt-6 text-[10px] text-zinc-400 animate-pulse uppercase tracking-[0.4em]">Empire Link Optimized...</p>
+                <div class="bg-white text-black px-6 py-2 font-black transform rotate-2 text-xl shadow-xl">COMMAND CENTER</div>
+                <p class="mt-6 text-[10px] text-zinc-400 animate-pulse uppercase tracking-[0.4em]">Select Unit to Deploy...</p>
             </div>
         </div>
     </main>
