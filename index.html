@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RNX | EMPIRE ONLINE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+        @keyframes pink-glow {
+            0%, 100% { box-shadow: 0 0 5px #FF1493; border-color: #FF1493; }
+            50% { box-shadow: 0 0 20px #FF1493, 0 0 10px #FF69B4; border-color: #ffffff; }
+        }
+        .neon-pulse-pink { animation: pink-glow 1.5s infinite; }
+        
+        .ransom-note {
+            font-family: 'Special Elite', cursive;
+            background: white;
+            color: black;
+            padding: 2px 6px;
+            transform: rotate(-3deg);
+            display: inline-block;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        /* Updated Grid for Gray Background visibility */
+        .bg-grid {
+            background-color: #2d2d2d;
+            background-image: linear-gradient(to right, #3d3d3d 1px, transparent 1px),
+                              linear-gradient(to bottom, #3d3d3d 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .sidebar-btn { 
+            transition: all 0.2s ease; 
+            border: 2px solid #444; 
+            margin-bottom: 1.2rem; 
+            width: 3.5rem; 
+            height: 3.5rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: #1a1a1a;
+        }
+        .sidebar-btn:hover { transform: rotate(5deg) scale(1.1); border-color: #FF1493; }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-white flex h-screen overflow-hidden bg-grid font-mono">
+
+    <!-- SIDEBAR -->
+    <nav class="w-24 bg-[#1a1a1a] border-r-4 border-[#FF1493] flex flex-col items-center py-6 z-50 overflow-y-auto no-scrollbar shadow-[5px_0_15px_rgba(0,0,0,0.5)]">
+        <div class="mb-10">
+            <span class="ransom-note text-sm">RNX</span>
+        </div>
+
+        <!-- THE BIBLE -->
+        <button onclick="loadSpace('https://docs.google.com/spreadsheets/d/1VDE2UK1lFXKsfgx1fI8z8nqesBzAIpWZHO4g4vCWE-k/preview', 'THE BIBLE')" class="sidebar-btn neon-pulse-pink">
+            <span class="text-2xl">📖</span>
+        </button>
+
+        <!-- FUNKY BLACK POPPY -->
+        <button onclick="loadSpace('https://www.depop.com/', 'FUNKY BLACK POPPY')" class="sidebar-btn">
+            <span class="text-black bg-[#FF1493] font-black px-1 text-[10px]">FBP</span>
+        </button>
+
+        <!-- BLACK POPPY CONTINUUM -->
+        <button onclick="loadSpace('https://blackpoppycontinuum.substack.com/', 'BLACK POPPY')" class="sidebar-btn">
+            <span class="text-[#FF1493] font-black text-xs">BPM</span>
+        </button>
+
+        <!-- CURSEY QUEEN -->
+        <button onclick="loadSpace('https://studio.youtube.com/', 'CURSEY QUEEN')" class="sidebar-btn">
+            <span class="text-2xl">📺</span>
+        </button>
+
+        <!-- TURTLE ORACLE -->
+        <button onclick="loadSpace('https://docs.google.com/spreadsheets/d/1VDE2UK1lFXKsfgx1fI8z8nqesBzAIpWZHO4g4vCWE-k/edit#gid=0', 'TURTLE ORACLE')" class="sidebar-btn border-dashed">
+            <span class="text-2xl">🐢</span>
+        </button>
+
+        <!-- GOTH DAMN BATZ -->
+        <button onclick="loadSpace('https://www.etsy.com/', 'GOTH DAMN BATZ')" class="sidebar-btn">
+            <span class="text-2xl">🦇</span>
+        </button>
+
+        <div class="mt-auto pt-4">
+            <button class="w-12 h-12 bg-[#FF1493] text-black font-bold border-2 border-white transform rotate-6 shadow-lg">AI</button>
+        </div>
+    </nav>
+
+    <!-- MAIN ENGINE -->
+    <main class="flex-1 flex flex-col">
+        <header class="h-14 bg-[#1a1a1a] border-b-2 border-[#FF1493] flex items-center px-6 justify-between">
+            <div class="flex items-center space-x-4">
+                <div class="h-4 w-4 bg-[#FF1493] animate-ping"></div>
+                <span id="space-title" class="ransom-note text-xs">STATUS: GRAY ACTIVATED</span>
+            </div>
+            <div class="flex flex-col items-end">
+                <div class="text-[10px] font-black text-[#FF1493] italic uppercase tracking-tighter">RNX / Riot Mode</div>
+            </div>
+        </header>
+
+        <div class="flex-1 relative">
+            <iframe id="viewport" src="about:blank"></iframe>
+            <div id="overlay" class="absolute inset-0 bg-[#2d2d2d] flex flex-col items-center justify-center">
+                <h1 class="text-7xl font-black italic text-white tracking-tighter mb-4 transform -rotate-1">
+                    RAYNE <span class="text-[#FF1493]">NIKE</span> X
+                </h1>
+                <div class="bg-white text-black px-6 py-2 font-black transform rotate-2 text-xl shadow-xl">
+                    COMMAND CENTER
+                </div>
+                <p class="mt-6 text-[10px] text-zinc-400 animate-pulse uppercase tracking-[0.4em]">Empire Link Optimized...</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function loadSpace(url, title) {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('viewport').src = url;
+            document.getElementById('space-title').innerText = "ACTIVE: " + title;
+        }
+    </script>
+</body>
+</html>
