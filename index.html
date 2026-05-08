@@ -71,18 +71,18 @@
         <div class="flex-1 overflow-y-auto px-4 py-2 custom-scroll">
             
             <div class="section-header">PRIMARY ENGINE</div>
-            <button onclick="window.open('https://rachaelnike-queen.github.io/Funkyblackpoppy-reselling-app/', '_blank')" class="sidebar-btn border-4 border-[#FF1493] neon-pulse-pink">
+            <button onclick="forceUpdate('https://rachaelnike-queen.github.io/Funkyblackpoppy-reselling-app/')" class="sidebar-btn border-4 border-[#FF1493] neon-pulse-pink">
                 <span class="text-xl">🛍️</span>
                 <span class="btn-label font-bold text-[#FF1493]">FBP RESELL APP</span>
             </button>
 
             <div class="section-header">Magik Tools</div>
-            <button onclick="window.open('https://funkyblackpoppy-art.github.io/turtle-oracle/', '_blank')" class="sidebar-btn border-l-4 border-green-500">
+            <button onclick="forceUpdate('https://funkyblackpoppy-art.github.io/turtle-oracle/')" class="sidebar-btn border-l-4 border-green-500">
                 <span class="text-xl">🐾</span>
                 <span class="btn-label">Turtle Paws</span>
             </button>
 
-            <button onclick="window.open('https://funkyblackpoppy-art.github.io/turtle-oracle/', '_blank')" class="sidebar-btn border-l-4 border-purple-500">
+            <button onclick="forceUpdate('https://funkyblackpoppy-art.github.io/turtle-oracle/')" class="sidebar-btn border-l-4 border-purple-500">
                 <span class="text-xl">✨</span>
                 <span class="btn-label">Kindred Soul</span>
             </button>
@@ -172,6 +172,13 @@
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('unit-title').innerText = "UNIT: " + name;
             document.getElementById('main-viewport').src = url;
+        }
+
+        // NEW CACHE BUSTER FUNCTION
+        function forceUpdate(url) {
+            // Adds a unique timestamp to the URL so the browser can't use a cached version
+            const freshUrl = url + "?v=" + new Date().getTime();
+            window.open(freshUrl, '_blank');
         }
     </script>
 </body>
