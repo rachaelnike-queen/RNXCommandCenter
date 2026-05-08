@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RNX | EMPIRE COMMAND</title>
+    <title>RNX | TOTAL EMPIRE CONTROL</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@900&display=swap');
 
-        /* Jamie Reid Pink Glow */
+        /* JAMIE REID / PUNK AESTHETIC */
         @keyframes pink-glow {
             0%, 100% { box-shadow: 0 0 10px #FF1493; border-color: #FF1493; }
             50% { box-shadow: 0 0 25px #FF1493, 0 0 15px #FF69B4; border-color: #ffffff; }
@@ -19,155 +19,159 @@
             font-family: 'Special Elite', cursive;
             background: white;
             color: black;
-            padding: 4px 10px;
-            transform: rotate(-2deg);
+            padding: 4px 12px;
+            transform: rotate(-1.5deg);
             display: inline-block;
             font-weight: 900;
             text-transform: uppercase;
         }
 
         .bg-grid {
-            background-color: #2d2d2d;
-            background-image: linear-gradient(to right, #3d3d3d 1px, transparent 1px),
-                              linear-gradient(to bottom, #3d3d3d 1px, transparent 1px);
-            background-size: 50px 50px;
+            background-color: #1a1a1a;
+            background-image: linear-gradient(#2d2d2d 1px, transparent 1px), 
+                              linear-gradient(90deg, #2d2d2d 1px, transparent 1px);
+            background-size: 45px 45px;
         }
 
-        /* LARGER SIDE BUTTONS */
         .sidebar-btn { 
             transition: all 0.2s ease; 
-            border: 3px solid #444; 
-            margin-bottom: 1.5rem; 
-            width: 7rem; /* Increased width */
-            height: 6rem; /* Increased height */
+            border: 4px solid #333; 
+            margin-bottom: 1.2rem; 
+            width: 10rem; 
+            height: 7rem; 
             display: flex; 
             flex-direction: column;
             align-items: center; 
             justify-content: center; 
-            background: #111;
+            background: #000;
             flex-shrink: 0;
-            border-radius: 4px;
+            border-radius: 8px;
         }
-        .sidebar-btn:hover { transform: scale(1.05); border-color: #FF1493; background: #000; }
+        .sidebar-btn:hover { transform: scale(1.05) rotate(1deg); border-color: #FF1493; }
         
-        /* HIGH VISIBILITY LABELS */
         .btn-label {
             font-family: 'Inter', sans-serif;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 900;
-            margin-top: 8px;
+            margin-top: 10px;
             color: #ffffff;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
             text-align: center;
-            line-height: 1;
         }
 
-        iframe { width: 100%; height: 100%; border: none; background: white; }
+        .utility-btn {
+            background: #111;
+            border: 2px solid #FF1493;
+            color: white;
+            padding: 4px 15px;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-left: 10px;
+            transition: all 0.2s;
+        }
+        .utility-btn:hover { background: #FF1493; color: black; }
 
-        .sidebar-scroll::-webkit-scrollbar { width: 6px; }
-        .sidebar-scroll::-webkit-scrollbar-thumb { background: #FF1493; }
-        .sidebar-scroll { scrollbar-width: thin; scrollbar-color: #FF1493 #1a1a1a; }
+        iframe { width: 100%; height: 100%; border: none; background: white; }
     </style>
 </head>
-<body class="text-white flex h-screen overflow-hidden bg-grid">
+<body class="text-white flex h-screen overflow-hidden bg-grid font-mono">
 
-    <!-- SIDEBAR: HIGH-VISIBILITY HANGAR -->
-    <nav class="w-48 bg-[#111] border-r-8 border-[#FF1493] flex flex-col items-center py-8 z-50 shadow-2xl">
-        <div class="mb-8 flex-shrink-0 text-center">
-            <span class="ransom-note text-lg">RNX</span>
+    <!-- SIDEBAR: THE ARMS PORTAL -->
+    <nav class="w-72 bg-black border-r-8 border-[#FF1493] flex flex-col items-center py-8 z-50 shadow-2xl overflow-y-auto">
+        <div class="mb-10 flex-shrink-0 text-center">
+            <span class="ransom-note text-xl">RNX ARMS</span>
         </div>
 
-        <div class="flex-1 overflow-y-auto sidebar-scroll w-full flex flex-col items-center px-4">
-            
-            <!-- MASTER BIBLE -->
-            <button onclick="loadSpace('https://docs.google.com/spreadsheets/d/1VDE2UK1lFXKsfgx1fI8z8nqesBzAIpWZHO4g4vCWE-k/preview', 'THE BIBLE')" class="sidebar-btn neon-pulse-pink">
-                <span class="text-3xl">📖</span>
-                <span class="btn-label">Master Bible</span>
-            </button>
+        <!-- MASTER BIBLE -->
+        <button onclick="loadPod('MASTER BIBLE', '0')" class="sidebar-btn neon-pulse-pink">
+            <span class="text-4xl">📖</span>
+            <span class="btn-label">Master Bible</span>
+        </button>
 
-            <!-- RACHAELNIKE -->
-            <button onclick="loadSpace('https://rachaelnike.com', 'RACHAELNIKE')" class="sidebar-btn">
-                <span class="text-3xl text-[#FF1493]">👑</span>
-                <span class="btn-label">RachaelNike</span>
-            </button>
+        <!-- PHOTO REPOSITORY -->
+        <button onclick="loadExternal('YOUR_DRIVE_FOLDER_URL', 'PHOTO REPO')" class="sidebar-btn">
+            <span class="text-4xl">📸</span>
+            <span class="btn-label">Photo Repo</span>
+        </button>
 
-            <!-- FUNKYBLACKPOPPY -->
-            <button onclick="loadSpace('https://www.depop.com/funkyblackpoppy', 'FUNKYBLACKPOPPY')" class="sidebar-btn">
-                <span class="text-3xl">🛍️</span>
-                <span class="btn-label">FunkyPoppy</span>
-            </button>
+        <!-- PROMPT BANK -->
+        <button onclick="loadPod('PROMPT BANK', 'PASTE_PROMPT_GID')" class="sidebar-btn">
+            <span class="text-4xl">🧠</span>
+            <span class="btn-label">Prompt Bank</span>
+        </button>
 
-            <!-- BLACKPOPPYMAGIK -->
-            <button onclick="loadSpace('https://blackpoppymagik.com', 'BLACKPOPPYMAGIK')" class="sidebar-btn">
-                <span class="text-3xl">🔮</span>
-                <span class="btn-label">BP Magik</span>
-            </button>
+        <!-- BRAND WORKSPACES -->
+        <button onclick="loadPod('TURTLE ORACLE', 'PASTE_TURTLE_GID')" class="sidebar-btn">
+            <span class="text-4xl">🐢</span>
+            <span class="btn-label">Turtle Oracle</span>
+        </button>
 
-            <!-- GHOSTQUE -->
-            <button onclick="loadSpace('https://ghostque.com', 'GHOSTQUE')" class="sidebar-btn">
-                <span class="text-3xl">👻</span>
-                <span class="btn-label">Ghostque</span>
-            </button>
+        <button onclick="loadPod('FUNKYPOPPY', 'PASTE_POPPY_GID')" class="sidebar-btn">
+            <span class="text-4xl">🛍️</span>
+            <span class="btn-label">FunkyPoppy</span>
+        </button>
 
-            <!-- VENDOO -->
-            <button onclick="loadSpace('https://app.vendoo.co', 'VENDOO')" class="sidebar-btn">
-                <span class="text-3xl">💰</span>
-                <span class="btn-label">Vendoo</span>
-            </button>
+        <!-- THE ALL ARMS PAGE -->
+        <button onclick="loadPod('ALL EMPIRE ARMS', 'PASTE_MASTER_ARMS_GID')" class="sidebar-btn border-double border-4 border-[#FF1493] mt-4">
+            <span class="text-4xl">🦾</span>
+            <span class="btn-label text-[#FF1493]">All My Arms</span>
+        </button>
 
-            <!-- CURSEYQUEEN -->
-            <button onclick="loadSpace('https://studio.youtube.com/', 'CURSEYQUEEN')" class="sidebar-btn">
-                <span class="text-3xl">📺</span>
-                <span class="btn-label">CurseyQueen</span>
-            </button>
-
-            <!-- BLACKPOPPYCONTINUUM -->
-            <button onclick="loadSpace('https://blackpoppycontinuum.substack.com/', 'CONTINUUM')" class="sidebar-btn">
-                <span class="text-3xl">🌀</span>
-                <span class="btn-label">Continuum</span>
-            </button>
-
-            <!-- TURTLE ORACLE -->
-            <button onclick="loadSpace('https://docs.google.com/spreadsheets/d/1VDE2UK1lFXKsfgx1fI8z8nqesBzAIpWZHO4g4vCWE-k/edit#gid=0', 'TURTLE ORACLE')" class="sidebar-btn border-dashed">
-                <span class="text-3xl">🐢</span>
-                <span class="btn-label">Oracle</span>
-            </button>
-
-        </div>
-
-        <div class="mt-6 flex-shrink-0 text-center">
-            <button class="w-14 h-14 bg-[#FF1493] text-black font-black border-4 border-white transform rotate-3 shadow-2xl text-xl">AI</button>
-            <div class="btn-label mt-2">ASSISTANT</div>
+        <!-- AI STATUS -->
+        <div class="mt-auto flex flex-col items-center pt-8 w-full border-t border-zinc-800">
+            <div class="w-16 h-16 bg-[#FF1493] text-black flex items-center justify-center font-black border-4 border-white transform rotate-3 shadow-2xl text-2xl mb-2">AI</div>
+            <span class="btn-label text-[#FF1493]">Architect Active</span>
         </div>
     </nav>
 
-    <!-- MAIN ENGINE -->
+    <!-- MAIN CONSOLE -->
     <main class="flex-1 flex flex-col">
-        <header class="h-16 bg-[#111] border-b-4 border-[#FF1493] flex items-center px-8 justify-between">
-            <div class="flex items-center space-x-4">
-                <div class="h-5 w-5 bg-[#FF1493] animate-ping"></div>
-                <span id="space-title" class="ransom-note text-sm uppercase">System Status: Active</span>
+        <header class="h-16 bg-black border-b-4 border-[#FF1493] flex items-center px-8 justify-between">
+            <div class="flex items-center">
+                <span id="unit-title" class="ransom-note text-sm">UNIT: STANDBY</span>
+                <div id="unit-tools" class="hidden flex items-center ml-8">
+                    <button onclick="changeView('edit')" class="utility-btn">Edit Mode</button>
+                    <button onclick="changeView('seo')" class="utility-btn">SEO/Social</button>
+                </div>
             </div>
-            <div class="text-xs font-black text-[#FF1493] italic uppercase tracking-widest">RNX Command / Riot Mode</div>
+            <div class="text-[10px] font-black text-[#FF1493] italic uppercase">Universe_Backend Sync</div>
         </header>
 
-        <div class="flex-1 relative bg-[#2d2d2d]">
-            <iframe id="viewport" src="about:blank"></iframe>
-            <div id="overlay" class="absolute inset-0 bg-[#2d2d2d] flex flex-col items-center justify-center">
-                <h1 class="text-8xl font-black italic text-white tracking-tighter mb-4 transform -rotate-1 drop-shadow-2xl">
+        <div class="flex-1 relative bg-[#1a1a1a]">
+            <iframe id="main-viewport" src="about:blank"></iframe>
+            <div id="overlay" class="absolute inset-0 bg-[#1a1a1a] flex flex-col items-center justify-center text-center">
+                <h1 class="text-8xl font-black italic text-white tracking-tighter mb-4 transform -rotate-1">
                     RAYNE <span class="text-[#FF1493]">NIKE</span> X
                 </h1>
-                <div class="bg-white text-black px-10 py-3 font-black transform rotate-1 text-2xl shadow-2xl">EMPIRE COMMAND</div>
+                <div class="bg-white text-black px-12 py-3 font-black text-3xl uppercase">Initializing...</div>
             </div>
         </div>
     </main>
 
     <script>
-        function loadSpace(url, title) {
+        const SHEET_BASE = "https://docs.google.com/spreadsheets/d/1VDE2UK1lFXKsfgx1fI8z8nqesBzAIpWZHO4g4vCWE-k/edit?rm=minimal#gid=";
+        let currentGid = "0";
+
+        function loadPod(name, gid) {
+            currentGid = gid;
             document.getElementById('overlay').style.display = 'none';
-            document.getElementById('viewport').src = url;
-            document.getElementById('space-title').innerText = "UNIT: " + title;
+            document.getElementById('unit-tools').style.display = 'flex';
+            document.getElementById('unit-title').innerText = "UNIT: " + name;
+            document.getElementById('main-viewport').src = SHEET_BASE + gid;
+        }
+
+        function loadExternal(url, name) {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('unit-tools').style.display = 'none';
+            document.getElementById('unit-title').innerText = "UNIT: " + name;
+            document.getElementById('main-viewport').src = url;
+        }
+
+        function changeView(type) {
+            const viewport = document.getElementById('main-viewport');
+            if(type === 'edit') viewport.src = SHEET_BASE + currentGid;
+            if(type === 'seo') viewport.src = SHEET_BASE + "PASTE_SEO_GID";
         }
     </script>
 </body>
