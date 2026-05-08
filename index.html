@@ -8,7 +8,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@900&display=swap');
 
-        /* PUNK AESTHETIC ANIMATIONS */
         @keyframes pink-glow {
             0%, 100% { box-shadow: 0 0 10px #FF1493; border-color: #FF1493; }
             50% { box-shadow: 0 0 25px #FF1493, 0 0 15px #FF69B4; border-color: #ffffff; }
@@ -30,28 +29,31 @@
             background-size: 40px 40px;
         }
 
-        /* SIDEBAR STYLING */
         .sidebar-btn { 
             transition: all 0.2s ease; 
             border: 3px solid #333; 
-            margin-bottom: 0.8rem; 
+            margin-bottom: 0.6rem; 
             width: 100%; 
-            height: 5.5rem; 
+            height: 4.5rem; 
             display: flex; flex-direction: column;
             align-items: center; justify-content: center; 
             background: #000; flex-shrink: 0; border-radius: 6px;
         }
-        .sidebar-btn:hover { transform: scale(1.02); border-color: #FF1493; background: #080808; }
+        .sidebar-btn:hover { transform: scale(1.02); border-color: #FF1493; }
         
         .btn-label {
             font-family: 'Inter', sans-serif;
-            font-size: 10px; font-weight: 900;
-            margin-top: 6px; color: #ffffff;
+            font-size: 9px; font-weight: 900;
+            margin-top: 4px; color: #ffffff;
             text-transform: uppercase; text-align: center;
-            letter-spacing: 0.05em;
         }
 
-        /* CUSTOM SCROLLBAR FOR SIDEBAR */
+        .section-header {
+            font-size: 10px; font-weight: 900; color: #FF1493;
+            text-transform: uppercase; margin: 1.5rem 0 0.5rem 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
         .custom-scroll::-webkit-scrollbar { width: 4px; }
         .custom-scroll::-webkit-scrollbar-thumb { background: #FF1493; }
 
@@ -60,90 +62,91 @@
 </head>
 <body class="text-white flex h-screen overflow-hidden bg-grid font-mono">
 
-    <!-- SIDEBAR: STATIC NAVIGATION -->
+    <!-- SIDEBAR -->
     <nav class="w-64 bg-black border-r-4 border-[#FF1493] flex flex-col h-full z-50 shadow-2xl">
         
-        <!-- BRAND HEADER -->
-        <div class="py-8 flex-shrink-0 text-center border-b border-zinc-900">
+        <div class="py-6 flex-shrink-0 text-center border-b border-zinc-900">
             <span class="ransom-note text-lg">RNX ARMS</span>
         </div>
 
-        <!-- SCROLLABLE ARMS AREA -->
-        <div class="flex-1 overflow-y-auto px-4 py-6 custom-scroll">
+        <!-- SCROLLABLE CONTENT -->
+        <div class="flex-1 overflow-y-auto px-4 py-2 custom-scroll">
             
-            <!-- MASTER BIBLE -->
+            <div class="section-header">Core Infrastructure</div>
             <button onclick="loadPod('MASTER BIBLE', '0')" class="sidebar-btn neon-pulse-pink">
-                <span class="text-3xl">📖</span>
+                <span class="text-2xl">📖</span>
                 <span class="btn-label">Master Bible</span>
             </button>
 
-            <!-- DESIGN STUDIO (CANVA) -->
             <button onclick="loadExternal('https://www.canva.com', 'CANVA STUDIO')" class="sidebar-btn border-l-4 border-[#00d2ff]">
-                <span class="text-3xl">🎨</span>
+                <span class="text-2xl">🎨</span>
                 <span class="btn-label">Canva Studio</span>
             </button>
 
-            <!-- UPLOAD HUB (DRIVE) -->
-            <button onclick="loadExternal('YOUR_DRIVE_UPLOAD_URL', 'UPLOAD HUB')" class="sidebar-btn border-l-4 border-yellow-400">
-                <span class="text-3xl">📤</span>
-                <span class="btn-label">Upload Assets</span>
-            </button>
-
-            <!-- PROMPT BANK -->
-            <button onclick="loadPod('PROMPT BANK', 'PASTE_PROMPT_GID')" class="sidebar-btn">
-                <span class="text-3xl">🧠</span>
-                <span class="btn-label">Prompt Bank</span>
-            </button>
-
-            <!-- TURTLE ORACLE -->
-            <button onclick="loadPod('TURTLE ORACLE', 'PASTE_TURTLE_GID')" class="sidebar-btn">
-                <span class="text-3xl">🐢</span>
+            <div class="section-header">Live Empire Hub</div>
+            <button onclick="loadExternal('https://funkyblackpoppy-art.github.io/turtle-oracle/', 'TURTLE ORACLE')" class="sidebar-btn">
+                <span class="text-2xl">🐢</span>
                 <span class="btn-label">Turtle Oracle</span>
             </button>
 
-            <!-- FUNKY POPPY -->
-            <button onclick="loadPod('FUNKY POPPY', 'PASTE_POPPY_GID')" class="sidebar-btn">
-                <span class="text-3xl">🛍️</span>
-                <span class="btn-label">Funky Poppy</span>
+            <button onclick="loadExternal('https://funkyblackpoppy-art.github.io/blackpoppymagik/', 'FBP MAGIK')" class="sidebar-btn">
+                <span class="text-2xl">🪄</span>
+                <span class="btn-label">FBP Magik</span>
             </button>
 
-            <!-- ALL ARMS DIRECTORY -->
+            <button onclick="loadExternal('https://funkyblackpoppy-art.github.io/curseyqueen-hq/', 'CURSEY QUEEN')" class="sidebar-btn">
+                <span class="text-2xl">👑</span>
+                <span class="btn-label">Cursey Queen</span>
+            </button>
+
+            <button onclick="loadExternal('https://funkyblackpoppy-art.github.io/sacred-chaos-mission-control/', 'SACRED CHAOS')" class="sidebar-btn">
+                <span class="text-2xl">🌀</span>
+                <span class="btn-label">Sacred Chaos</span>
+            </button>
+
+            <button onclick="loadExternal('https://blackpoppymagik-rgb.github.io/book-of-shadows/', 'SHADOWS')" class="sidebar-btn">
+                <span class="text-2xl">📓</span>
+                <span class="btn-label">Book of Shadows</span>
+            </button>
+
+            <div class="section-header">Operations</div>
+            <button onclick="loadPod('PROMPT BANK', 'PASTE_PROMPT_GID')" class="sidebar-btn">
+                <span class="text-2xl">🧠</span>
+                <span class="btn-label">Prompt Bank</span>
+            </button>
+
             <button onclick="loadPod('ALL ARMS', 'PASTE_MASTER_ARMS_GID')" class="sidebar-btn border-double border-2 border-[#FF1493]">
-                <span class="text-3xl text-[#FF1493]">🦾</span>
+                <span class="text-2xl text-[#FF1493]">🦾</span>
                 <span class="btn-label text-[#FF1493]">All My Arms</span>
             </button>
 
         </div>
 
-        <!-- AI ARCHITECT HUB (ANCHORED BOTTOM) -->
-        <div class="p-6 border-t border-zinc-800 bg-black flex flex-col items-center flex-shrink-0">
+        <!-- AI HUB (FIXED) -->
+        <div class="p-4 border-t border-zinc-800 bg-black flex flex-col items-center flex-shrink-0">
             <button onclick="loadPod('AI HUB', 'PASTE_TOOLBOX_GID')" class="group">
-                <div class="w-14 h-14 bg-[#FF1493] text-black flex items-center justify-center font-black border-2 border-white transform rotate-2 shadow-2xl text-xl mb-1 transition-all group-hover:rotate-0 group-hover:scale-110 neon-pulse-pink">
+                <div class="w-12 h-12 bg-[#FF1493] text-black flex items-center justify-center font-black border-2 border-white transform rotate-2 shadow-2xl text-xl mb-1 transition-all group-hover:rotate-0 group-hover:scale-110 neon-pulse-pink">
                     AI
                 </div>
             </button>
-            <span class="text-[9px] font-black text-[#FF1493] uppercase tracking-widest">Architect Hub</span>
+            <span class="text-[8px] font-black text-[#FF1493] uppercase">Architect Hub</span>
         </div>
     </nav>
 
     <!-- MAIN CONSOLE -->
     <main class="flex-1 flex flex-col min-w-0">
-        <!-- TOP STATUS BAR -->
-        <header class="h-14 bg-black border-b-2 border-[#FF1493] flex items-center px-6 justify-between flex-shrink-0">
+        <header class="h-12 bg-black border-b-2 border-[#FF1493] flex items-center px-6 justify-between flex-shrink-0">
             <span id="unit-title" class="ransom-note text-[10px]">UNIT: STANDBY</span>
             <div class="text-[9px] font-black text-[#FF1493] italic uppercase tracking-widest">RNX Empire Sync</div>
         </header>
 
-        <!-- VIEWPORT -->
         <div class="flex-1 relative">
             <iframe id="main-viewport" src="about:blank"></iframe>
-            
-            <!-- BOOT SCREEN OVERLAY -->
             <div id="overlay" class="absolute inset-0 bg-[#1a1a1a] flex flex-col items-center justify-center text-center z-10">
-                <h1 class="text-6xl font-black italic text-white tracking-tighter mb-2">
+                <h1 class="text-5xl font-black italic text-white tracking-tighter mb-2">
                     RAYNE <span class="text-[#FF1493]">NIKE</span> X
                 </h1>
-                <div class="bg-white text-black px-8 py-2 font-black text-xl uppercase">System Ready</div>
+                <div class="bg-white text-black px-8 py-2 font-black text-xl uppercase">Portals Active</div>
             </div>
         </div>
     </main>
