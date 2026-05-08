@@ -8,6 +8,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@900&display=swap');
 
+        /* PUNK AESTHETIC ANIMATIONS */
         @keyframes pink-glow {
             0%, 100% { box-shadow: 0 0 10px #FF1493; border-color: #FF1493; }
             50% { box-shadow: 0 0 25px #FF1493, 0 0 15px #FF69B4; border-color: #ffffff; }
@@ -29,108 +30,130 @@
             background-size: 40px 40px;
         }
 
-        /* Fixed Sidebar Buttons to prevent overflow */
+        /* SIDEBAR STYLING */
         .sidebar-btn { 
             transition: all 0.2s ease; 
             border: 3px solid #333; 
             margin-bottom: 0.8rem; 
-            width: 9rem; 
+            width: 100%; 
             height: 5.5rem; 
             display: flex; flex-direction: column;
             align-items: center; justify-content: center; 
             background: #000; flex-shrink: 0; border-radius: 6px;
         }
-        .sidebar-btn:hover { transform: scale(1.05); border-color: #FF1493; }
+        .sidebar-btn:hover { transform: scale(1.02); border-color: #FF1493; background: #080808; }
         
         .btn-label {
             font-family: 'Inter', sans-serif;
             font-size: 10px; font-weight: 900;
             margin-top: 6px; color: #ffffff;
             text-transform: uppercase; text-align: center;
+            letter-spacing: 0.05em;
         }
 
-        /* Viewport Container */
-        #viewport-container { width: 100%; height: 100%; position: relative; background: #fff; }
-        iframe { width: 100%; height: 100%; border: none; }
+        /* CUSTOM SCROLLBAR FOR SIDEBAR */
+        .custom-scroll::-webkit-scrollbar { width: 4px; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #FF1493; }
+
+        iframe { width: 100%; height: 100%; border: none; background: white; }
     </style>
 </head>
 <body class="text-white flex h-screen overflow-hidden bg-grid font-mono">
 
-    <!-- SIDEBAR -->
+    <!-- SIDEBAR: STATIC NAVIGATION -->
     <nav class="w-64 bg-black border-r-4 border-[#FF1493] flex flex-col h-full z-50 shadow-2xl">
-        <!-- Logo Section -->
-        <div class="py-6 flex-shrink-0 text-center">
+        
+        <!-- BRAND HEADER -->
+        <div class="py-8 flex-shrink-0 text-center border-b border-zinc-900">
             <span class="ransom-note text-lg">RNX ARMS</span>
         </div>
 
-        <!-- Scrollable Button Area -->
-        <div class="flex-1 overflow-y-auto flex flex-col items-center px-4 custom-scroll">
+        <!-- SCROLLABLE ARMS AREA -->
+        <div class="flex-1 overflow-y-auto px-4 py-6 custom-scroll">
+            
+            <!-- MASTER BIBLE -->
             <button onclick="loadPod('MASTER BIBLE', '0')" class="sidebar-btn neon-pulse-pink">
                 <span class="text-3xl">📖</span>
                 <span class="btn-label">Master Bible</span>
             </button>
 
-            <button onclick="loadExternal('YOUR_DRIVE_URL', 'PHOTO REPO')" class="sidebar-btn">
-                <span class="text-3xl">📸</span>
-                <span class="btn-label">Photo Repo</span>
+            <!-- DESIGN STUDIO (CANVA) -->
+            <button onclick="loadExternal('https://www.canva.com', 'CANVA STUDIO')" class="sidebar-btn border-l-4 border-[#00d2ff]">
+                <span class="text-3xl">🎨</span>
+                <span class="btn-label">Canva Studio</span>
             </button>
 
+            <!-- UPLOAD HUB (DRIVE) -->
+            <button onclick="loadExternal('YOUR_DRIVE_UPLOAD_URL', 'UPLOAD HUB')" class="sidebar-btn border-l-4 border-yellow-400">
+                <span class="text-3xl">📤</span>
+                <span class="btn-label">Upload Assets</span>
+            </button>
+
+            <!-- PROMPT BANK -->
             <button onclick="loadPod('PROMPT BANK', 'PASTE_PROMPT_GID')" class="sidebar-btn">
                 <span class="text-3xl">🧠</span>
                 <span class="btn-label">Prompt Bank</span>
             </button>
 
+            <!-- TURTLE ORACLE -->
             <button onclick="loadPod('TURTLE ORACLE', 'PASTE_TURTLE_GID')" class="sidebar-btn">
                 <span class="text-3xl">🐢</span>
                 <span class="btn-label">Turtle Oracle</span>
             </button>
 
+            <!-- FUNKY POPPY -->
+            <button onclick="loadPod('FUNKY POPPY', 'PASTE_POPPY_GID')" class="sidebar-btn">
+                <span class="text-3xl">🛍️</span>
+                <span class="btn-label">Funky Poppy</span>
+            </button>
+
+            <!-- ALL ARMS DIRECTORY -->
             <button onclick="loadPod('ALL ARMS', 'PASTE_MASTER_ARMS_GID')" class="sidebar-btn border-double border-2 border-[#FF1493]">
                 <span class="text-3xl text-[#FF1493]">🦾</span>
-                <span class="btn-label">All My Arms</span>
+                <span class="btn-label text-[#FF1493]">All My Arms</span>
             </button>
+
         </div>
 
-        <!-- AI BUTTON - FIXED AT BOTTOM -->
-        <div class="p-6 border-t border-zinc-800 flex flex-col items-center flex-shrink-0 bg-black">
+        <!-- AI ARCHITECT HUB (ANCHORED BOTTOM) -->
+        <div class="p-6 border-t border-zinc-800 bg-black flex flex-col items-center flex-shrink-0">
             <button onclick="loadPod('AI HUB', 'PASTE_TOOLBOX_GID')" class="group">
                 <div class="w-14 h-14 bg-[#FF1493] text-black flex items-center justify-center font-black border-2 border-white transform rotate-2 shadow-2xl text-xl mb-1 transition-all group-hover:rotate-0 group-hover:scale-110 neon-pulse-pink">
                     AI
                 </div>
             </button>
-            <span class="text-[9px] font-black text-[#FF1493] uppercase tracking-tighter">Architect Hub</span>
+            <span class="text-[9px] font-black text-[#FF1493] uppercase tracking-widest">Architect Hub</span>
         </div>
     </nav>
 
     <!-- MAIN CONSOLE -->
     <main class="flex-1 flex flex-col min-w-0">
+        <!-- TOP STATUS BAR -->
         <header class="h-14 bg-black border-b-2 border-[#FF1493] flex items-center px-6 justify-between flex-shrink-0">
             <span id="unit-title" class="ransom-note text-[10px]">UNIT: STANDBY</span>
             <div class="text-[9px] font-black text-[#FF1493] italic uppercase tracking-widest">RNX Empire Sync</div>
         </header>
 
+        <!-- VIEWPORT -->
         <div class="flex-1 relative">
-            <div id="viewport-container">
-                <iframe id="main-viewport" src="about:blank"></iframe>
-            </div>
+            <iframe id="main-viewport" src="about:blank"></iframe>
             
+            <!-- BOOT SCREEN OVERLAY -->
             <div id="overlay" class="absolute inset-0 bg-[#1a1a1a] flex flex-col items-center justify-center text-center z-10">
                 <h1 class="text-6xl font-black italic text-white tracking-tighter mb-2">
                     RAYNE <span class="text-[#FF1493]">NIKE</span> X
                 </h1>
-                <div class="bg-white text-black px-8 py-2 font-black text-xl uppercase">Re-Connecting...</div>
+                <div class="bg-white text-black px-8 py-2 font-black text-xl uppercase">System Ready</div>
             </div>
         </div>
     </main>
 
     <script>
-        // Use the 'edit' path instead of 'preview' to ensure it doesn't just show a blank grid
         const SHEET_BASE = "https://docs.google.com/spreadsheets/d/1VDE2UK1lFXKsfgx1fI8z8nqesBzAIpWZHO4g4vCWE-k/edit?rm=minimal#gid=";
 
         function loadPod(name, gid) {
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('unit-title').innerText = "UNIT: " + name;
-            // The magic is in the GID. Ensure this is the actual number from your URL
             document.getElementById('main-viewport').src = SHEET_BASE + gid;
         }
 
